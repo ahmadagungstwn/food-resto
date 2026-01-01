@@ -30,10 +30,10 @@ const PopularFoodCarousel = ({ items }: PopularFoodCarouselProps) => {
       >
         <CarouselContent className="-ml-3">
           {items.map((item) => (
-            <CarouselItem key={item.id} className="pl-3 basis-[70%]">
+            <CarouselItem key={item.id} className="pl-3 basis-[40%]">
               <Link to={`/product/${item.id}`}>
                 <div className="relative rounded-2xl overflow-hidden bg-card border border-border">
-                  <div className="aspect-[16/10] relative">
+                  <div className="aspect-16/10 relative">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -48,9 +48,15 @@ const PopularFoodCarousel = ({ items }: PopularFoodCarouselProps) => {
                     </div>
                     {/* Discount Badge */}
                     {item.originalPrice && (
-                      <div className="absolute top-3 right-3 bg-destructive px-2 py-1 rounded-full">
-                        <span className="text-xs font-bold text-destructive-foreground">
-                          -{Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}%
+                      <div className="absolute top-3 right-3 bg-destructive px-2 rounded-full">
+                        <span className="text-[11px] font-bold text-destructive-foreground">
+                          -
+                          {Math.round(
+                            ((item.originalPrice - item.price) /
+                              item.originalPrice) *
+                              100
+                          )}
+                          %
                         </span>
                       </div>
                     )}

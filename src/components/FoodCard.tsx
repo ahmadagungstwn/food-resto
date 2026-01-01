@@ -47,13 +47,13 @@ const FoodCard = ({
     <Link to={`/product/${id}`} className="block">
       <div className="relative rounded-2xl overflow-hidden bg-card group animate-fade-in card-shadow">
         {/* Image Container */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-16/7 overflow-hidden">
           <img
             src={image}
             alt={name}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          
+
           {/* Favorite Button */}
           <button
             onClick={handleFavoriteClick}
@@ -70,17 +70,25 @@ const FoodCard = ({
           {/* Rating Badge */}
           <div className="absolute top-3 right-3 flex items-center gap-1 bg-secondary/90 backdrop-blur-sm rounded-full px-2 py-1">
             <Star className="h-4 w-4 fill-warning text-warning" />
-            <span className="text-sm font-semibold text-foreground">{rating}</span>
+            <span className="text-sm font-semibold text-foreground">
+              {rating}
+            </span>
           </div>
         </div>
 
         {/* Content */}
         <div className="p-4">
           <h3 className="text-lg font-bold text-foreground mb-1">{name}</h3>
-          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{description}</p>
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+            {description}
+          </p>
           <div className="flex items-center justify-between">
-            <p className="text-xs text-muted-foreground uppercase tracking-wide">Harga</p>
-            <p className="text-lg font-bold text-primary">{formatPrice(price)}</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">
+              Harga
+            </p>
+            <p className="text-lg font-bold text-primary">
+              {formatPrice(price)}
+            </p>
           </div>
         </div>
       </div>

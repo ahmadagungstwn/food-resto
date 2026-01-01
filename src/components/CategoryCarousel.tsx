@@ -18,7 +18,11 @@ interface CategoryCarouselProps {
   onCategoryChange: (categoryId: string) => void;
 }
 
-const CategoryCarousel = ({ categories, activeCategory, onCategoryChange }: CategoryCarouselProps) => {
+const CategoryCarousel = ({
+  categories,
+  activeCategory,
+  onCategoryChange,
+}: CategoryCarouselProps) => {
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
@@ -34,13 +38,18 @@ const CategoryCarousel = ({ categories, activeCategory, onCategoryChange }: Cate
       >
         <CarouselContent className="-ml-3">
           {categories.map((category) => (
-            <CarouselItem key={category.id} className="pl-3 basis-[45%]">
+            <CarouselItem key={category.id} className="basis-[25%]">
               <Button
-                variant={activeCategory === category.id ? "category-active" : "category"}
+                variant={
+                  activeCategory === category.id
+                    ? "category-active"
+                    : "category"
+                }
                 onClick={() => onCategoryChange(category.id)}
                 className={cn(
-                  "w-full h-20 flex flex-col items-center justify-center gap-2 rounded-2xl",
-                  activeCategory === category.id && "shadow-lg shadow-primary/30"
+                  "w-full h-20 flex flex-col items-center justify-center rounded-2xl",
+                  activeCategory === category.id &&
+                    "shadow-lg shadow-primary/30"
                 )}
               >
                 <span className="text-3xl">{category.icon}</span>
