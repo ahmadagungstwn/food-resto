@@ -4,6 +4,8 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import googleIcon from "@/assets/google.png";
+import facebookIcon from "@/assets/facebook.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +25,9 @@ const Login = () => {
       <div className="mb-8 text-6xl">🍔</div>
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-foreground mb-2">Selamat Datang</h1>
+      <h1 className="text-3xl font-bold text-foreground mb-2">
+        Selamat Datang
+      </h1>
       <p className="text-muted-foreground mb-8">Masuk untuk melanjutkan</p>
 
       {/* Form */}
@@ -55,12 +59,19 @@ const Login = () => {
             onClick={() => setShowPassword(!showPassword)}
             className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
           >
-            {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+            {showPassword ? (
+              <EyeOff className="h-5 w-5" />
+            ) : (
+              <Eye className="h-5 w-5" />
+            )}
           </button>
         </div>
 
         <div className="text-right">
-          <Link to="/forgot-password" className="text-primary text-sm hover:underline">
+          <Link
+            to="/forgot-password"
+            className="text-primary text-sm hover:underline"
+          >
             Lupa password?
           </Link>
         </div>
@@ -80,17 +91,25 @@ const Login = () => {
       {/* Social Login */}
       <div className="flex gap-4">
         <Button variant="secondary" size="icon-lg" className="rounded-full">
-          <span className="text-xl font-bold">G</span>
+          <img src={googleIcon} alt="Login with Google" className="w-9 h-9" />
         </Button>
+
         <Button variant="secondary" size="icon-lg" className="rounded-full">
-          <span className="text-xl font-bold"></span>
+          <img
+            src={facebookIcon}
+            alt="Login with Facebook"
+            className="w-12 h-12"
+          />
         </Button>
       </div>
 
       {/* Register Link */}
       <p className="mt-8 text-muted-foreground">
         Belum punya akun?{" "}
-        <Link to="/register" className="text-primary font-semibold hover:underline">
+        <Link
+          to="/register"
+          className="text-primary font-semibold hover:underline"
+        >
           Daftar
         </Link>
       </p>

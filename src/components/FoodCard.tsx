@@ -86,7 +86,7 @@ const FoodCard = ({
             <p className="text-xs text-muted-foreground uppercase tracking-wide">
               Harga
             </p>
-            <p className="text-lg font-bold text-primary">
+            <p className="text-md font-bold text-primary">
               {formatPrice(price)}
             </p>
           </div>

@@ -65,16 +65,7 @@ const Index = () => {
           >
             <CarouselContent className="-ml-3">
               {filteredItems.map((item) => (
-                <CarouselItem
-                  key={item.id}
-                  className="
-            pl-3
-            basis-[80%]
-            sm:basis-[45%]
-            md:basis-[30%]
-            lg:basis-[22%]
-          "
-                >
+                <CarouselItem key={item.id} className="pl-3 basis-[80%]">
                   <FoodCard
                     id={item.id}
                     name={item.name}

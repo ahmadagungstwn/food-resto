@@ -1,5 +1,6 @@
 import { ChevronDown, Bell } from "lucide-react";
 import { Button } from "./ui/button";
+import userAvatar from "@/assets/user.jpg";
 
 interface HeaderProps {
   userName?: string;
@@ -8,9 +9,9 @@ interface HeaderProps {
 }
 
 const Header = ({
-  userName = "Franzz",
-  location = "Jakarta Selatan",
-  avatarUrl,
+  userName = "Lisa Andina",
+  location = "Pekanbaru, Riau",
+  avatarUrl = userAvatar,
 }: HeaderProps) => {
   return (
     <header className="flex items-center justify-between py-4">

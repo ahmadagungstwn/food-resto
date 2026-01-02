@@ -159,7 +159,7 @@
 }
 
 @utility text-gradient-primary {
-  @apply bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-primary to-orange-400 bg-clip-text text-transparent;
 }
 
 @utility card-shadow {

@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Heart, ShoppingCart, Star, Clock, Flame } from "lucide-react";
+import {
+  ArrowLeft,
+  Heart,
+  ShoppingCart,
+  Star,
+  Clock,
+  Flame,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import QuantitySelector from "@/components/QuantitySelector";
 import { foodItems, formatPrice } from "@/data/foodData";
@@ -16,7 +23,9 @@ const ProductDetail = () => {
   const product = foodItems.find((item) => item.id === id);
 
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[2]?.name || "Regular");
+  const [selectedSize, setSelectedSize] = useState(
+    product?.sizes?.[2]?.name || "Regular"
+  );
   const [isFavorite, setIsFavorite] = useState(false);
 
   if (!product) {
@@ -27,7 +36,8 @@ const ProductDetail = () => {
     );
   }
 
-  const sizeModifier = product.sizes?.find((s) => s.name === selectedSize)?.priceModifier || 0;
+  const sizeModifier =
+    product.sizes?.find((s) => s.name === selectedSize)?.priceModifier || 0;
   const totalPrice = (product.price + sizeModifier) * quantity;
 
   const handleAddToCart = () => {
@@ -36,7 +46,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background max-w-md mx-auto mb-16">
       {/* Hero Image */}
       <div className="relative h-72 overflow-hidden">
         <img
@@ -44,7 +54,7 @@ const ProductDetail = () => {
           alt={product.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent" />
 
         {/* Top Navigation */}
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
@@ -63,7 +73,12 @@ const ProductDetail = () => {
               onClick={() => setIsFavorite(!isFavorite)}
               className="bg-secondary/80 backdrop-blur-sm"
             >
-              <Heart className={cn("h-5 w-5", isFavorite && "fill-primary text-primary")} />
+              <Heart
+                className={cn(
+                  "h-5 w-5",
+                  isFavorite && "fill-primary text-primary"
+                )}
+              />
             </Button>
             <Button
               variant="icon"
@@ -82,9 +97,13 @@ const ProductDetail = () => {
         <div className="bg-card rounded-t-3xl p-6 min-h-[60vh]">
           {/* Title and Price */}
           <div className="flex items-start justify-between mb-4">
-            <h1 className="text-2xl font-bold text-foreground">{product.name}</h1>
+            <h1 className="text-2xl font-bold text-foreground">
+              {product.name}
+            </h1>
             <div className="text-right">
-              <p className="text-xl font-bold text-primary">{formatPrice(product.price + sizeModifier)}</p>
+              <p className="text-xl font-bold text-primary">
+                {formatPrice(product.price + sizeModifier)}
+              </p>
               {product.originalPrice && (
                 <p className="text-sm text-muted-foreground line-through">
                   {formatPrice(product.originalPrice)}
@@ -102,38 +121,51 @@ const ProductDetail = () => {
             {product.prepTime && (
               <div className="flex items-center gap-1 bg-secondary rounded-full px-3 py-1.5">
                 <Clock className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm font-semibold">{product.prepTime}</span>
+                <span className="text-sm font-semibold">
+                  {product.prepTime}
+                </span>
               </div>
             )}
             {product.calories && (
               <div className="flex items-center gap-1 bg-secondary rounded-full px-3 py-1.5">
                 <Flame className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold">{product.calories} Kcal</span>
+                <span className="text-sm font-semibold">
+                  {product.calories} Kcal
+                </span>
               </div>
             )}
           </div>
 
           {/* Description */}
           <div className="mb-6">
-            <h3 className="text-lg font-bold text-foreground mb-2">Description</h3>
+            <h3 className="text-lg font-bold text-foreground mb-2">
+              Description
+            </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Fresh salmon sushi straight from the Japanese sea. Premium quality salmon on perfectly seasoned sushi rice with wasabi and pickled ginger.
+              Fresh salmon sushi straight from the Japanese sea. Premium quality
+              salmon on perfectly seasoned sushi rice with wasabi and pickled
+              ginger.
             </p>
           </div>
 
           {/* Size Selection */}
           {product.sizes && (
             <div className="mb-6">
-              <h3 className="text-lg font-bold text-foreground mb-3">Choose Size</h3>
+              <h3 className="text-lg font-bold text-foreground mb-3">
+                Choose Size
+              </h3>
               <div className="flex gap-3">
                 {product.sizes.map((size) => (
                   <Button
                     key={size.name}
-                    variant={selectedSize === size.name ? "outline" : "secondary"}
+                    variant={
+                      selectedSize === size.name ? "outline" : "secondary"
+                    }
                     onClick={() => setSelectedSize(size.name)}
                     className={cn(
                       "flex-1",
-                      selectedSize === size.name && "border-primary text-primary"
+                      selectedSize === size.name &&
+                        "border-primary text-primary"
                     )}
                   >
                     {size.name}
@@ -156,10 +188,7 @@ const ProductDetail = () => {
                 quantity={quantity}
                 onQuantityChange={setQuantity}
               />
-              <Button
-                className="flex-1 h-14"
-                onClick={handleAddToCart}
-              >
+              <Button className="flex-1 h-14" onClick={handleAddToCart}>
                 Add to Cart · {formatPrice(totalPrice)}
               </Button>
             </div>
